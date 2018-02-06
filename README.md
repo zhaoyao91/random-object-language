@@ -123,7 +123,7 @@ the implementation.
 - **weightsRef?: any** - specify the reference of the collection of weights. syntax should be defined by the 
 implementation.
 
-Note:
+**notes**
  
 - there must be exact one of `values` or `valuesRef`.
 - `weights` and `weightsRef` are exclusive.
@@ -142,7 +142,7 @@ the sub arrays each have 2 items: the first one, the map key, is the value of de
 value, is the expected free field. 
 - **default: object** - the default free field if the depended field value failed to match any item of the map.  
 
-Note:
+**notes**
 
 - if the map key is an object, it will be compared deeply.
 
