@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.1.0
+- Version：0.2.0
 
 ## Introduction
 
@@ -24,11 +24,6 @@ Using a schema to define a random object, limit the value range of each fields, 
       "$type": "enum",
       "values": [1, 3, "Bob", {"name": "Alice"}],
       "weights": [2, 2, 1, 4]
-    },
-    "field_3_2": {
-      "$type": "enum",
-      "valuesRef": "xxx",
-      "weightsRef": "yyy"
     }
   },
   "field_4": {
@@ -37,8 +32,7 @@ Using a schema to define a random object, limit the value range of each fields, 
     "map": [
       [1, {"$type": "number", "range": {"gte": 2, "lt": 9}}],
       [2, {"$type": "enum", "values": ["a", "b", "c"]}],
-      ["Bob", {"$type": "enum", "valuesRef": "xxx"}],
-      [{"name": "Alice"}, {"$type": null}] 
+      ["Bob", {"$type": "assigned", "value": "God"}]
     ],
     "default": {"$type": null}
   }
@@ -117,17 +111,11 @@ Select a value from given set.
 ##### options
 
 - **values?: array** - all available values.
-- **valuesRef?: any** - specify the reference of the collection of all available values. syntax should be defined by 
-the implementation.
 - **weights?: array of number** - weights of corresponding values.
-- **weightsRef?: any** - specify the reference of the collection of weights. syntax should be defined by the 
-implementation.
 
 **notes**
  
-- there must be exact one of `values` or `valuesRef`.
-- `weights` and `weightsRef` are exclusive.
-- the default value of weight is 1.
+- the default weight is 1.
 
 #### "dependant"
 
