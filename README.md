@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.2.0
+- Version：0.3.0
 
 ## Introduction
 
@@ -28,11 +28,12 @@ Using a schema to define a random object, limit the value range of each fields, 
   },
   "field_4": {
     "$type": "dependant",
-    "dependsOn": "field_3.field_3_1",
+    "dependsOn": ["field_2", "field_3.field_3_1"],
     "map": [
-      [1, {"$type": "number", "range": {"gte": 2, "lt": 9}}],
-      [2, {"$type": "enum", "values": ["a", "b", "c"]}],
-      ["Bob", {"$type": "assigned", "value": "God"}]
+      [1, 1, {"$type": "number", "range": {"gte": 2, "lt": 9}}],
+      [2, 2, {"$type": "enum", "values": ["a", "b", "c"]}],
+      [3, "Bob", {"$type": "assigned", "value": "God"}],
+      [4, {"name": "Alice"}, {"field_4_1": {"$type": "assigned", "value": "Girl"}}]
     ],
     "default": {"$type": null}
   }
@@ -62,7 +63,7 @@ e.g.
 }
 ```
 
-### Free Field
+### Free Field (FF)
 
 A *Free Field* is a JSON object which contains a special `$type` field and other option fields required by the type.
 
@@ -119,16 +120,16 @@ Select a value from given set.
 
 #### "dependant"
 
-The value of this field depends on other field.
+The value of this field depends on other field(s).
 
 ##### options
 
-- **dependsOn: string** - the other field this field depends on. use dot format to reference a deep field. e.g. 
+- **dependsOn: array of string** - the other fields this field depends on. use dot format to reference a deep field. e.g. 
 `outer.inner`.
-- **map: array of [key, value]** - decide the actual free field based on the actual value of the depended field.
-the sub arrays each have 2 items: the first one, the map key, is the value of depended field; the second one, the map 
-value, is the expected free field. 
-- **default: object** - the default free field if the depended field value failed to match any item of the map.  
+- **map: array of [key1, key2, ..., value]** - decide the actual FF or FO based on the actual values of the depended fields.
+the sub arrays each have n+1 items: the first n items, the map keys, are the values of depended fields; the last one, the map 
+value, is the expected FF or FO. 
+- **default: object** - the default FF or FO if the depended field value failed to match any item in the map.  
 
 **notes**
 
