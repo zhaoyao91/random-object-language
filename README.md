@@ -146,4 +146,6 @@ value, is the expected FV.
 
 - if the map key is an object, it will be compared deeply.
 
-## MIT
+## License
+
+MIT
