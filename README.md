@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.5.2
+- Version：0.5.3
 
 ## Introduction
 
@@ -136,6 +136,7 @@ value is `{"$type": "DNE"}`.
 **notes**
 
 - if the map key is an object, it will be compared deeply.
+- if the map key is null, it will match both null and undefined field.
 
 ## License
 
