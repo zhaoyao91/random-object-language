@@ -1,3 +1,12 @@
+### 0.5.0
+
+- remove `FV` concept
+- update definition of `FO`, now the leaf field **must** be a `FF`
+- `values` of `enum` type must be normal value
+- `value` of `map` option of `dependant` type must be FF
+- `default` option of `dependant` type must be FF
+- add default value for `default` option of `dependant` type
+
 ### 0.4.1
 
 - change null type to DNE type

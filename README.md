@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.4.1
+- Version：0.5.0
 
 ## Introduction
 
@@ -10,7 +10,6 @@ Using a schema to define a random object, limit the value range of each fields, 
 
 ```json
 {
-  "field_0": "some concrete value",
   "field_1": {
     "$type": "assigned",
     "value": "some concrete value"
@@ -33,8 +32,8 @@ Using a schema to define a random object, limit the value range of each fields, 
     "map": [
       [1, 1, {"$type": "number", "range": {"gte": 2, "lt": 9}}],
       [2, 2, {"$type": "enum", "values": ["a", "b", "c"]}],
-      [3, "Bob", "God"],
-      [4, {"name": "Alice"}, {"field_4_1": {"$type": "enum", "values": ["Boy", "Girl"]}}]
+      [3, "Bob", {"$type": "assigned","value": "God"}],
+      [4, {"name": "Alice"}, {"$type": "enum", "values": ["Boy", "Girl"]}]
     ],
     "default": {"$type": "DNE"}
   }
@@ -47,19 +46,14 @@ Using a schema to define a random object, limit the value range of each fields, 
 
 JSON
 
-### Free Value (FV)
-
-A plain JSON value or FO or FF.
-
 ### Free Object (FO)
 
-A *Free Object* is a JSON object where the value of any leaf field **maybe** be a *Free Field*. 
+A *Free Object* is a JSON object where the value of any leaf field **must** be a *Free Field*. 
 
 e.g.
 
 ```
 {
-  "field_0": "some value",
   "field_1": FF,
   "field_2": {
     field_2_1: FF,
@@ -98,11 +92,6 @@ If a field is of this type, the value should be pre-assigned.
 
 - **value: any** - the pre-assigned value.
 
-**notes**
-
-- the value is always treated as a JSON value, even it is like a FF or FO. this ensures that a assigned field is a 
-terminated field, thus allowing you set a FF-like or FO-like object as a value. 
-
 #### "number"
 
 Provide a number for this field.
@@ -118,11 +107,11 @@ Provide a number for this field.
   
 #### "enum"
 
-Select a value from given set.
+Select a value from given values.
 
 ##### options
 
-- **values?: array** - all available FVs.
+- **values?: array** - all available values.
 - **weights?: array of number** - weights of corresponding values.
 
 **notes**
@@ -137,10 +126,11 @@ The value of this field depends on other field(s).
 
 - **dependsOn: array of string** - the other fields this field depends on. use dot format to reference a deep field. e.g. 
 `outer.inner`.
-- **map: array of [key1, key2, ..., value]** - decide the actual FV based on the actual values of the depended fields.
-the sub arrays each have n+1 items: the first n items, the map keys, are the values of depended fields; the last one, the map 
-value, is the expected FV. 
-- **default: object** - the default FV if the depended field value failed to match any item in the map.  
+- **map: array of [key1, key2, ..., value]** - decide the actual FF based on the actual values of the depended fields.
+the sub arrays each have n+1 items: the first n items, the map keys, are the values of depended fields; the last one is
+ the expected FF. 
+- **default?: object** - the default FF if the depended field value failed to match any item in the map. the default 
+value is `{"$type": "DNE"}`.  
 
 **notes**
 
