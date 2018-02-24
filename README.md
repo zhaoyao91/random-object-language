@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.4.0
+- Version：0.4.1
 
 ## Introduction
 
@@ -36,7 +36,7 @@ Using a schema to define a random object, limit the value range of each fields, 
       [3, "Bob", "God"],
       [4, {"name": "Alice"}, {"field_4_1": {"$type": "enum", "values": ["Boy", "Girl"]}}]
     ],
-    "default": {"$type": null}
+    "default": {"$type": "DNE"}
   }
 }
 ```
@@ -86,7 +86,7 @@ e.g.
 
 ### Types
 
-#### null
+#### "DNE"
 
 Special type which means this field does not exist.
 
