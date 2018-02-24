@@ -1,3 +1,7 @@
+### 0.5.2
+
+- make `range` option of `number` type required
+
 ### 0.5.1
 
 - make it clear that the depended field must be a FF

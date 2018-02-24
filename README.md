@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.5.1
+- Version：0.5.2
 
 ## Introduction
 
@@ -99,7 +99,8 @@ Provide a number for this field.
 ##### options
 
 - **integer?: bool = false** - if true, the number should be an integer.
-- **range?: object** - specify the range of the number, e.g. `{gt: 1, lt: 10}`. available limiters are:
+- **range: object** - specify the range of the number, e.g. `{gt: 1, lt: 10}`. you must limit both the lower and upper 
+boundaries. available limiters are:
   - **gt** - greater than
   - **gte** - greater than or equal
   - **lt** - less than
