@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.5.0
+- Version：0.5.1
 
 ## Introduction
 
@@ -124,8 +124,8 @@ The value of this field depends on other field(s).
 
 ##### options
 
-- **dependsOn: array of string** - the other fields this field depends on. use dot format to reference a deep field. e.g. 
-`outer.inner`.
+- **dependsOn: array of string** - the other FFs this field depends on. use dot format to reference a deep path. e.g. 
+`[outer.inner]`.
 - **map: array of [key1, key2, ..., value]** - decide the actual FF based on the actual values of the depended fields.
 the sub arrays each have n+1 items: the first n items, the map keys, are the values of depended fields; the last one is
  the expected FF. 

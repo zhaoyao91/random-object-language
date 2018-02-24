@@ -1,3 +1,7 @@
+### 0.5.1
+
+- make it clear that the depended field must be a FF
+
 ### 0.5.0
 
 - remove `FV` concept
