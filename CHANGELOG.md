@@ -1,3 +1,7 @@
+### 0.6.1
+
+- make `values` option of `enum` type required and non-empty
+
 ### 0.6.0
 
 - change `DNE` to `void`

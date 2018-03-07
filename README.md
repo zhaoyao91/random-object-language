@@ -1,6 +1,6 @@
 # Random Object Language
 
-- Version：0.6.0
+- Version：0.6.1
 
 ## Introduction
 
@@ -112,7 +112,7 @@ Select a value from given values.
 
 ##### options
 
-- **values?: array** - all available values.
+- **values: array** - all available values. cannot be empty.
 - **weights?: array of number** - weights of corresponding values.
 
 **notes**
