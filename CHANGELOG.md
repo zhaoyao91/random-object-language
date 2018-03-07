@@ -1,3 +1,10 @@
+### 0.6.0
+
+- change `DNE` to `void`
+- change `$type` to `@type`
+- add `virtual` option
+
+
 ### 0.5.3
 
 - allow null key of map option of dependant type to match undefined field
